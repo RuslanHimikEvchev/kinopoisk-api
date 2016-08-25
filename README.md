@@ -1,5 +1,15 @@
 Простая обертка над api Кинопоиска (http://docs.kinopoiskapi.apiary.io/#reference/0)
 
+Установка:
+
+```git
+    git clone https://github.com/RuslanHimikEvchev/kinopoisk-api.git
+```
+
+```composer
+    composer install
+```
+
 Использование:
 
 `test.php`
@@ -30,13 +40,13 @@ $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
       ])
  ```
       
- Если необходимо пересозранить метод в чертеже
+ Если необходимо пересохранить метод в чертеже
  
  ```php
  $blueprint->dumpIntoFile();
  ```
  
- Выбираем север
+ Выбираем сервер
  
  ```php
  $server = \Kinopoisk\Type\ServerEndpointType::SERVER_PRODUCTION;

@@ -32,11 +32,20 @@ class Gateway
 
         $arguments = is_array($arguments) ? $arguments : ArgumentHelper::parseArgumentQueryString($arguments);
 
-        $response = $this->client->request('GET', $method, [
-            'query' => $arguments
-        ]);
+        try {
+            $response = $this->client->request('GET', $method, [
+                'query' => $arguments
+            ]);
 
-        return $response->getBody()->getContents();
+            return $response->getBody()->getContents();
+        } catch (\Exception $e) {
+            return json_encode([
+                'error' => [
+                    'message' => $e->getMessage(),
+                    'code'    => $e->getCode()
+                ]
+            ]);
+        }
     }
 
 }

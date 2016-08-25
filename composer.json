@@ -1,0 +1,21 @@
+{
+  "name": "himik_od_ua/kinopoisk",
+  "description": "API wrapper for kinopoisk",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Kinopoisk\\": "src/"
+    }
+  },
+  "require": {
+    "symfony/http-foundation": "3.*",
+    "guzzlehttp/guzzle": "^6.2"
+  }
+}

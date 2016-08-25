@@ -6,37 +6,47 @@
 
 Опционально получаем запрос из GET (`/test.php?method=searchFilms&params[keyword]=первый&params[page]=3`)
 
-`$request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+```php
+$request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
  $method = $request->get('method');
  $params = $request->get('params');
- `
+ ```
  
  Инициализируем Blueprint (список методов API)
  
- ``$blueprint =  new \Kinopoisk\Blueprint('blueprint.json');``
+ ```php
+ $blueprint =  new \Kinopoisk\Blueprint('blueprint.json');
+ ```
  
  Опционально, методы можно переопределять.
  
- `$blueprint
+ ```php
+ $blueprint
       ->addMethod('getFilm', [
           'params' => [
               'filmID', 'page'
           ],
           'description' => 'Получить фильм'
-      ])`
+      ])
+ ```
       
  Если необходимо пересозранить метод в чертеже
  
- `$blueprint->dumpIntoFile();`
+ ```php
+ $blueprint->dumpIntoFile();
+ ```
  
  Выбираем север
  
- `$server = \Kinopoisk\Type\ServerEndpointType::SERVER_PRODUCTION;`
+ ```php
+ $server = \Kinopoisk\Type\ServerEndpointType::SERVER_PRODUCTION;
+ ```
  
  Инициализируем шлюз API
  
- `$api = new \Kinopoisk\Api\Gateway($server, $blueprint);
+ ```php 
+ $api = new \Kinopoisk\Api\Gateway($server, $blueprint);
  $response = $api->call($method, $params);
- `
+ ```
  
  В переменной `$response` - наш ответ от API
